@@ -1,0 +1,19 @@
+﻿TODO:
+	FIX ORANGE!?!
+
+	Complete How-To webpages
+		incl bg
+	Work on bg image
+
+	Recolor PNGs
+
+	Generate Recipe
+	Generate Recipe list
+	Generate Manifest(if checked)
+
+	check that QB and neg QB are the same size
+	check that PNG and neg PNG are the same size
+
+	progress bar(s)
+
+	set up colors

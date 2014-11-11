@@ -1,0 +1,15 @@
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.exe.config
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.exe
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.pdb
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.xml
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors_Mod_QB_Recolorer.Form1.resources
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors_Mod_QB_Recolorer.Resources.resources
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.vbproj.GenerateResource.Cache
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.exe
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.xml
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.pdb
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.exe.manifest
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Debug\Colors Mod QB Recolorer.application
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.exe.manifest
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.application
+C:\Users\David\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Debug\Colors Mod QB Recolorer.vbprojResolveAssemblyReference.cache
