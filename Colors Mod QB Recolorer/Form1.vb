@@ -2,7 +2,7 @@
 
 Public Class Form1
     Public basicColors() As dye_color = {New dye_color("red", "Red", 0, 0, 0, False, False),
-                                         New dye_color("orange", "Orange", 30, 0, 0, False, False),
+                                         New dye_color("orange", "Orange", 31, 0, 0, False, False),
                                          New dye_color("yellow", "Yellow", 60, 0, 0, False, False),
                                          New dye_color("green", "Green", 125, 0, 0, False, False),
                                          New dye_color("blue", "Blue", 210, 0, 0, False, False),

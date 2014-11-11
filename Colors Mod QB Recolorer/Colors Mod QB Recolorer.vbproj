@@ -153,8 +153,6 @@
     <Content Include="Help\GettingStarted.html" />
     <Content Include="Help\Help.html" />
     <Content Include="Help\Shortcuts.html" />
-    <None Include="Resources\bg.png" />
-    <None Include="Resources\bg_tabs_white.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
