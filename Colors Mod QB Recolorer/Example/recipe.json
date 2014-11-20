@@ -1,0 +1,25 @@
+{
+   "type":"recipe",
+
+   "work_units"  : 3,
+   "recipe_name" : "~hrcolor~ ~hrname~",
+   "description" : "The most elegant of tables.",
+   "flavor"      : "Better make sure it matches the curtains!",
+   "portrait"    : "\~mname~~ifolder~\~iname~_~color~.png",
+
+   "ingredients": [
+      {
+         "material" : "wood resource",
+         "count" : 2
+      },
+	  {
+         "material" : "blue cloth resource",
+         "count" : 1
+      }
+  ],
+  "produces": [
+      {
+         "item":"~mname~:~iname~_~color~"
+      }
+  ]
+}

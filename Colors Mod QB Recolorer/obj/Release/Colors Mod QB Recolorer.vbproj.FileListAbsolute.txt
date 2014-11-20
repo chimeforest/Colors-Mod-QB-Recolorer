@@ -1,0 +1,10 @@
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Release\Colors Mod QB Recolorer.exe.config
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Release\Colors Mod QB Recolorer.exe
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Release\Colors Mod QB Recolorer.pdb
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\bin\Release\Colors Mod QB Recolorer.xml
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors_Mod_QB_Recolorer.Form1.resources
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors_Mod_QB_Recolorer.Resources.resources
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors Mod QB Recolorer.vbproj.GenerateResource.Cache
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors Mod QB Recolorer.exe
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors Mod QB Recolorer.xml
+c:\users\david\documents\visual studio 2013\Projects\Colors Mod QB Recolorer\Colors Mod QB Recolorer\obj\Release\Colors Mod QB Recolorer.pdb

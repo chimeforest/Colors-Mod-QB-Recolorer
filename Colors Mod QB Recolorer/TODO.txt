@@ -1,0 +1,24 @@
+﻿TODO:
+
+	New Icon
+	have a recipe.json which the program can parse.
+		need to add a bunch of recipe shortcuts for this.
+			or will I?
+	Add option to generate crafter mixinto.
+
+	~~~~someday soon~~~~
+	check that QB and neg QB are the same size
+	check that PNG and neg PNG are the same size
+	error messages in a box
+	change custom colors to "color_name,HRCN,recipe_color,Hue(0-360),Saturation,Value,setSat(T/F),setVal(T/F)"
+
+
+	~~~~eventually~~~~
+	if manifest .json exists in output folder attempt to add aliases to it
+	if [crafter]_recipes.json exsists, attempt to add recipes to it
+	actually fix custom colors
+		QB is being recolored along with New_QB
+	pretyfy/cleanup recipe generation code
+
+	~~~~distant future~~~~
+	eventually maybe someday have it sort through a bunch of folders and automatically add everything from the folders to a mod folder
