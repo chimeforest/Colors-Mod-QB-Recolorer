@@ -2,13 +2,27 @@
 Imports System.Text
 
 Public Class Form1
-    Public basicColors() As dye_color = {New dye_color("red", "Red", 0, 0, 0, False, False),
-                                         New dye_color("orange", "Orange", 30, 0, 0, False, False),
-                                         New dye_color("yellow", "Yellow", 60, 0, 0, False, False),
-                                         New dye_color("green", "Green", 125, 0, 0, False, False),
-                                         New dye_color("blue", "Blue", 210, 0, 0, False, False),
-                                         New dye_color("purple", "Purple", 275, 0, 0, False, False),
-                                         New dye_color("undyed", "Undyed", 40, 30, 0, True, False)
+    Public basicColors() As dye_color = {New dye_color("red", "Red", "red", "s0", 0, 0),
+                                         New dye_color("orange", "Orange", "orange", "s30", 0, 0),
+                                         New dye_color("yellow", "Yellow", "yellow", "s60", 0, 0),
+                                         New dye_color("green", "Green", "green", "s125", 0, 0),
+                                         New dye_color("blue", "Blue", "blue", "s210", 0, 0),
+                                         New dye_color("purple", "Purple", "purple", "s275", 0, 0),
+                                         New dye_color("undyed", "Undyed", "", "s40", "s30", 0)
+                                        }
+    Public paleColors() As dye_color = {New dye_color("lt_red", "Light Red", "red", "s0", -85, 100),
+                                         New dye_color("lt_orange", "Light Orange", "orange", "s30", -85, 100),
+                                         New dye_color("lt_yellow", "Light Yellow", "yellow", "s60", -85, 100),
+                                         New dye_color("lt_green", "Light Green", "green", "s125", -85, 100),
+                                         New dye_color("lt_blue", "Light Blue", "blue", "s210", -85, 100),
+                                         New dye_color("lt_purple", "Light Purple", "purple", "s275", -85, 100)
+                                        }
+    Public richColors() As dye_color = {New dye_color("dk_red", "Dark Red", "red", "s0", 125, -65),
+                                         New dye_color("dk_orange", "Dark Orange", "orange", "s30", 125, -65),
+                                         New dye_color("dk_yellow", "Dark Yellow", "yellow", "s60", 125, -65),
+                                         New dye_color("dk_green", "Dark Green", "green", "s125", 125, -65),
+                                         New dye_color("dk_blue", "Dark Blue", "blue", "s210", 125, -65),
+                                         New dye_color("dk_purple", "Dark Purple", "purple", "s275", 125, -65)
                                         }
     'more colors here
 
@@ -62,42 +76,42 @@ Public Class Form1
                 BTN_start.Text = "Folder location in mod text field is empty, please try again."
             Else    'TODO need to add recipe field checks
                 For Each foundFile As String In My.Computer.FileSystem.GetFiles(TB_input_folder.Text)
-                    Console.WriteLine(foundFile)
+                    'Console.WriteLine(foundFile)
                     If foundFile.EndsWith(".png") Then
                         If foundFile.EndsWith("NEG.png") Then
                             PNG_NEG_File = foundFile
-                            Console.WriteLine("NEG.png found")
+                            'Console.WriteLine("NEG.png found")
                         Else
                             PNG_File = foundFile
-                            Console.WriteLine(".png found")
+                            'Console.WriteLine(".png found")
                         End If
                     ElseIf foundFile.EndsWith(".qb") Then
                         If foundFile.EndsWith("NEG.qb") Then
                             If foundFile.EndsWith("iconic_NEG.qb") Then
                                 QB_iconic_NEG_File = foundFile
-                                Console.WriteLine("iconic_NEG.qb found")
+                                'Console.WriteLine("iconic_NEG.qb found")
                             Else
                                 QB_NEG_File = foundFile
-                                Console.WriteLine("NEG.qb found")
+                                'Console.WriteLine("NEG.qb found")
                             End If
                         Else
                             If foundFile.EndsWith("iconic.qb") Then
                                 QB_iconic_File = foundFile
-                                Console.WriteLine("iconic.qb found")
+                                'Console.WriteLine("iconic.qb found")
                             Else
                                 QB_File = foundFile
-                                Console.WriteLine(".qb found")
+                                'Console.WriteLine(".qb found")
                             End If
                         End If
                     ElseIf foundFile.EndsWith(".json") Then
                         If foundFile.EndsWith("recipe.json") Then
                             JSON_recipe = foundFile
-                            Console.WriteLine("recipe.json found")
+                            'Console.WriteLine("recipe.json found")
                         Else
                             'JSON_files.Add(foundFile)
                             ReDim Preserve JSON_files(JSON_files.Length)
                             JSON_files(JSON_files.Length - 1) = foundFile
-                            Console.WriteLine(".json found")
+                            'Console.WriteLine(".json found")
                         End If
                     Else
                         Console.WriteLine("unrecognized file found ... skipping")
@@ -114,12 +128,24 @@ Public Class Form1
                 For i As Integer = 0 To CheckedListBox1.Items.Count - 1
                     If CheckedListBox1.GetItemCheckState(i) = CheckState.Checked Then
                         colors_to_use.Add(basicColors(i))
-                        Console.WriteLine(basicColors(i).name + " is checked")
+                        'Console.WriteLine(basicColors(i).name + " is checked")
+                    End If
+                Next
+                For i As Integer = 0 To CheckedListBox2.Items.Count - 1
+                    If CheckedListBox2.GetItemCheckState(i) = CheckState.Checked Then
+                        colors_to_use.Add(paleColors(i))
+                        'Console.WriteLine(paleColors(i).name + " is checked")
+                    End If
+                Next
+                For i As Integer = 0 To CheckedListBox3.Items.Count - 1
+                    If CheckedListBox3.GetItemCheckState(i) = CheckState.Checked Then
+                        colors_to_use.Add(richColors(i))
+                        'Console.WriteLine(richColors(i).name + " is checked")
                     End If
                 Next
                 If CheckBox4.Checked = True Then
                     Dim lines() As String
-                    lines = TextBox10.Lines()
+                    lines = TB_CC.Lines()
                     For i As Integer = 0 To lines.Length - 1
                         If lines(i) <> "" Then
                             colors_to_use.Add(PARSE.COLOR(lines(i)))
@@ -128,22 +154,24 @@ Public Class Form1
                 End If
                 'more colors here
 
+
+
                 'import qb
                 If QB_File <> "" And CB_o_skip_qb.Checked = False Then
                     QB = QBFile.open(QB_File)
-                    Console.WriteLine("QB_File imported as QB")
+                    'Console.WriteLine("QB_File imported as QB")
                     If QB_NEG_File <> "" And CB_o_skip_qb.Checked = False Then
                         QB_NEG = QBFile.open(QB_NEG_File)
-                        Console.WriteLine("QB_NEG_File imported as QB_NEG")
+                        'Console.WriteLine("QB_NEG_File imported as QB_NEG")
                     End If
                 End If
 
                 If QB_iconic_File <> "" And CB_o_skip_qb.Checked = False Then
                     QB_iconic = QBFile.open(QB_iconic_File)
-                    Console.WriteLine("QB_iconic_File imported as QB_iconic")
+                    'Console.WriteLine("QB_iconic_File imported as QB_iconic")
                     If QB_iconic_NEG_File <> "" And CB_o_skip_qb.Checked = False Then
                         QB_iconic_NEG = QBFile.open(QB_iconic_NEG_File)
-                        Console.WriteLine("QB_iconic_NEG_File imported as QB_iconic_NEG")
+                        'Console.WriteLine("QB_iconic_NEG_File imported as QB_iconic_NEG")
                     End If
                 End If
 
@@ -167,7 +195,7 @@ Public Class Form1
                     Dim c_PNG As Bitmap
                     'set current color
                     currentColor = colors_to_use(i)
-                    Console.WriteLine(currentColor.ToString)
+                    'Console.WriteLine(currentColor.ToString)
 
                     'set current folder and file name
                     Dim name = TB_iname.Text + "_" + currentColor.name
@@ -181,11 +209,11 @@ Public Class Form1
                     'reimport qb and iconic qb
                     If QB_File <> "" And CB_o_skip_qb.Checked = False Then
                         QB = QBFile.open(QB_File)
-                        Console.WriteLine("QB_File imported as QB")
+                        'Console.WriteLine("QB_File imported as QB")
                     End If
                     If QB_iconic_File <> "" And CB_o_skip_qb.Checked = False Then
                         QB_iconic = QBFile.open(QB_iconic_File)
-                        Console.WriteLine("QB_iconic_File imported as QB_iconic")
+                        'Console.WriteLine("QB_iconic_File imported as QB_iconic")
                     End If
 
                     'qb
@@ -341,9 +369,9 @@ Public Class Form1
 
     Private Sub CheckBox4_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox4.CheckedChanged
         If (CheckBox4.Checked) Then
-            TextBox10.Enabled = True
+            GroupBox1.Enabled = True
         Else
-            TextBox10.Enabled = False
+            GroupBox1.Enabled = False
         End If
     End Sub
 
@@ -527,7 +555,12 @@ Public Class Form1
         TB_iname.Text = ""
         TB_input_folder.Text = ""
         TB_mname.Text = ""
+
         TB_option_alias.Text = ""
+        NUD_o_R.Value = 0
+        NUD_o_G.Value = 0
+        NUD_o_B.Value = 0
+
         TB_recipe_crafter.Text = ""
         TB_recipe_crafter.Text = ""
         TB_recipe_desc.Text = ""
@@ -539,6 +572,15 @@ Public Class Form1
         TB_recipe_port.Text = ""
         TB_recipe_prod.Text = ""
         NUD_work.Value = 1
+
+        TB_CC.Text = ""
+        TB_CC_name.Text = ""
+        TB_CC_HRCN.Text = ""
+        TB_CC_dye.Text = ""
+        NUD_CC_H.Value = 0
+        NUD_CC_S.Value = 0
+        NUD_CC_V.Value = 0
+
         WebBrowser1.Navigate("file:///" & IO.Path.GetFullPath(".\Help\Help.html"))
     End Sub
 
@@ -557,6 +599,56 @@ Public Class Form1
         Else
             BTN_open_output.Enabled = True
         End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CB_o_CNEG.CheckedChanged
+        If CB_o_CNEG.Checked Then
+            NUD_o_R.Enabled = True
+            NUD_o_G.Enabled = True
+            NUD_o_B.Enabled = True
+            Label17.Enabled = True
+        Else
+            NUD_o_R.Enabled = False
+            NUD_o_G.Enabled = False
+            NUD_o_B.Enabled = False
+            Label17.Enabled = False
+        End If
+    End Sub
+
+    Private Sub BTN_AddCC_Click(sender As Object, e As EventArgs) Handles BTN_AddCC.Click
+        Dim NewCC As String = ""
+
+        If TB_CC.Text <> "" Then
+            NewCC = vbNewLine
+        End If
+
+        NewCC = NewCC & TB_CC_name.Text & "," & TB_CC_HRCN.Text & "," & TB_CC_dye.Text & ","
+
+        If RB_CC_H_Set.Checked Then
+            NewCC = NewCC & "s"
+        End If
+        If RB_CC_H_Per.Checked Then
+            NewCC = NewCC & "p"
+        End If
+        NewCC = NewCC & NUD_CC_H.Value & ","
+
+        If RB_CC_S_Set.Checked Then
+            NewCC = NewCC & "s"
+        End If
+        If RB_CC_S_Per.Checked Then
+            NewCC = NewCC & "p"
+        End If
+        NewCC = NewCC & NUD_CC_S.Value & ","
+
+        If RB_CC_V_Set.Checked Then
+            NewCC = NewCC & "s"
+        End If
+        If RB_CC_V_Per.Checked Then
+            NewCC = NewCC & "p"
+        End If
+        NewCC = NewCC & NUD_CC_V.Value
+
+        TB_CC.Text = TB_CC.Text & NewCC
     End Sub
 End Class
 
@@ -989,15 +1081,10 @@ Public Class color
 
     'recolor QB
     Public Shared Function recolorQB(ByVal QB As QBModel, ByVal QB_NEG As QBModel, ByVal dyeColor As dye_color)
-        Dim NewQB As New QBModel(recolorQB(QB, QB_NEG, dyeColor.hue, dyeColor.sat, dyeColor.val, dyeColor.setSat, dyeColor.setVal))
+        Dim NewQB As New QBModel(recolorQB(QB, QB_NEG, dyeColor.hue, dyeColor.sat, dyeColor.val))
         Return NewQB
     End Function
-    Public Shared Function recolorQB(ByVal QB As QBModel, ByVal QB_NEG As QBModel, ByVal hue As Integer, ByVal sat As Integer, ByVal val As Integer)
-        Dim NewQB As New QBModel
-        NewQB = recolorQB(QB, QB_NEG, hue, sat, val, False, False)
-        Return NewQB
-    End Function
-    Public Shared Function recolorQB(ByVal QB As QBModel, ByVal QB_NEG As QBModel, ByVal hue As Integer, ByVal sat As Integer, ByVal val As Integer, ByVal setSat As Boolean, ByVal setVal As Boolean) As QBModel
+    Public Shared Function recolorQB(ByVal QB As QBModel, ByVal QB_NEG As QBModel, ByVal hue As String, ByVal sat As String, ByVal val As String) As QBModel
         Dim NewQB As New QBModel(QB)
         'recolor code
 
@@ -1010,36 +1097,20 @@ Public Class color
                     For x As Integer = 0 To QB_NEG.matrix(j).data.GetLength(0) - 1
                         If QB_NEG.matrix(j).data(x, y, z) > 0 Then
                             Dim colorbytes() As Byte = INT32toRGBA(QB_NEG.matrix(j).data(x, y, z))
-                            If colorbytes(0) = 0 And colorbytes(1) = 0 And colorbytes(2) = 0 And colorbytes(3) <> 0 Then    'voxel is visible and pure black
+                            Dim recolor As Boolean = False
+
+                            If Form1.CB_o_CNEG.Checked Then
+                                If colorbytes(0) = Form1.NUD_o_R.Value And colorbytes(1) = Form1.NUD_o_R.Value And colorbytes(2) = Form1.NUD_o_R.Value And colorbytes(3) <> 0 Then recolor = True 'voxel is visible and equal to custom color
+                            Else
+                                If colorbytes(0) = 0 And colorbytes(1) = 0 And colorbytes(2) = 0 And colorbytes(3) <> 0 Then recolor = True 'voxel is visible and pure black
+                            End If
+
+                            If recolor = True Then
                                 'open that voxel in NewQB
-                                'convert int32color to rgba, rgba to hsv
+                                'convert int32color to rgba
                                 Dim rgba() As Byte = INT32toRGBA(QB.matrix(j).data(x, y, z))
-                                Dim hsv() As Integer = RGBtoHSV2(rgba(0), rgba(1), rgba(2))
-
-                                'change hue
-                                hsv(0) = hue
-                                'change saturation
-                                If setSat = True Then
-                                    hsv(1) = sat
-                                Else
-                                    hsv(1) = hsv(1) + sat
-                                End If
-                                'change value
-                                If setVal = True Then
-                                    hsv(2) = val
-                                Else
-                                    hsv(2) = hsv(2) + val
-                                End If
-
-                                'make sure hsv is in the correct bounds
-                                If hsv(0) < 0 Then hsv(0) = 0
-                                If hsv(0) > 360 Then hsv(0) = 360
-
-                                If hsv(1) < 0 Then hsv(1) = 0
-                                If hsv(1) > 255 Then hsv(1) = 255
-
-                                If hsv(2) < 0 Then hsv(2) = 0
-                                If hsv(2) > 255 Then hsv(2) = 255
+                                'convert rgb to hsv and recolor
+                                Dim hsv() As Integer = recolorHSV(RGBtoHSV2(rgba(0), rgba(1), rgba(2)), hue, sat, val)
 
                                 'convert new hsv to rgba (using original a)
                                 Dim rgba_temp() As Byte = HSVtoRGB2(hsv(0), hsv(1), hsv(2))
@@ -1064,46 +1135,24 @@ Public Class color
     'recolor PNG
     Public Shared Function recolorPNG(ByVal PNG As Bitmap, ByVal PNG_NEG As Bitmap, ByVal dyeColor As dye_color)
         Dim NewPNG As Bitmap
-        NewPNG = recolorPNG(PNG, PNG_NEG, dyeColor.hue, dyeColor.sat, dyeColor.val, dyeColor.setSat, dyeColor.setVal)
+        NewPNG = recolorPNG(PNG, PNG_NEG, dyeColor.hue, dyeColor.sat, dyeColor.val)
         Return NewPNG
     End Function
-    Public Shared Function recolorPNG(ByVal PNG As Bitmap, ByVal PNG_NEG As Bitmap, ByVal hue As Integer, ByVal sat As Integer, ByVal val As Integer)
-        Dim NewPNG As Bitmap
-        NewPNG = recolorPNG(PNG, PNG_NEG, hue, sat, val, False, False)
-        Return NewPNG
-    End Function
-    Public Shared Function recolorPNG(ByVal PNG As Bitmap, ByVal PNG_NEG As Bitmap, ByVal hue As Integer, ByVal sat As Integer, ByVal val As Integer, ByVal setSat As Boolean, ByVal setVal As Boolean)
+    Public Shared Function recolorPNG(ByVal PNG As Bitmap, ByVal PNG_NEG As Bitmap, ByVal hue As String, ByVal sat As String, ByVal val As String)
         Dim NewPNG As New Bitmap(PNG)
         'recolor code here
         For x As Integer = 0 To PNG_NEG.Width - 1
             For y As Integer = 0 To PNG_NEG.Width - 1
-                If PNG_NEG.GetPixel(x, y).R = 0 And PNG_NEG.GetPixel(x, y).G = 0 And PNG_NEG.GetPixel(x, y).B = 0 And PNG_NEG.GetPixel(x, y).A <> 0 Then
-                    Dim hsv() As Integer = RGBtoHSV2(PNG.GetPixel(x, y).R, PNG.GetPixel(x, y).G, PNG.GetPixel(x, y).B)
+                Dim recolor As Boolean = False
 
-                    'change hue
-                    hsv(0) = hue
-                    'change saturation
-                    If setSat Then
-                        hsv(1) = sat
-                    Else
-                        hsv(1) = hsv(1) + sat
-                    End If
-                    'change value
-                    If setVal Then
-                        hsv(2) = val
-                    Else
-                        hsv(2) = hsv(2) + val
-                    End If
+                If Form1.CB_o_CNEG.Checked Then
+                    If PNG_NEG.GetPixel(x, y).R = Form1.NUD_o_R.Value And PNG_NEG.GetPixel(x, y).G = Form1.NUD_o_G.Value And PNG_NEG.GetPixel(x, y).B = Form1.NUD_o_B.Value And PNG_NEG.GetPixel(x, y).A <> 0 Then recolor = True
+                Else
+                    If PNG_NEG.GetPixel(x, y).R = 0 And PNG_NEG.GetPixel(x, y).G = 0 And PNG_NEG.GetPixel(x, y).B = 0 And PNG_NEG.GetPixel(x, y).A <> 0 Then recolor = True
+                End If
 
-                    'make sure hsv is in the correct bounds
-                    If hsv(0) < 0 Then hsv(0) = 0
-                    If hsv(0) > 360 Then hsv(0) = 360
-
-                    If hsv(1) < 0 Then hsv(1) = 0
-                    If hsv(1) > 255 Then hsv(1) = 255
-
-                    If hsv(2) < 0 Then hsv(2) = 0
-                    If hsv(2) > 255 Then hsv(2) = 255
+                If recolor = True Then
+                    Dim hsv() As Integer = recolorHSV(RGBtoHSV2(PNG.GetPixel(x, y).R, PNG.GetPixel(x, y).G, PNG.GetPixel(x, y).B), hue, sat, val)
 
                     Dim rgb() As Byte = HSVtoRGB2(hsv(0), hsv(1), hsv(2))
                     Dim a As Byte = PNG.GetPixel(x, y).A
@@ -1115,30 +1164,72 @@ Public Class color
 
         Return NewPNG
     End Function
+
+    Public Shared Function recolorHSV(ByVal HSV() As Integer, ByVal HC As String, ByVal SC As String, ByVal VC As String) As Integer()
+        Return recolorHSV(HSV(0), HSV(1), HSV(2), HC, SC, VC)
+    End Function
+    Public Shared Function recolorHSV(ByVal H As Integer, ByVal S As Integer, ByVal V As Integer, ByVal HC As String, ByVal SC As String, ByVal VC As String) As Integer()
+        'New hsv
+        Dim hsv() As Integer = {H, S, V}
+
+        'change Hue
+        If HC.ToLower.StartsWith("s") Then
+            hsv(0) = Integer.Parse(HC.Substring(1))
+        ElseIf HC.ToLower.StartsWith("p") Then
+            hsv(0) = hsv(0) * (Integer.Parse(HC.Substring(1)) / 100)
+        Else
+            hsv(0) = hsv(0) + Integer.Parse(HC)
+        End If
+
+        'change saturation
+        If SC.ToLower.StartsWith("s") Then
+            hsv(1) = Integer.Parse(SC.Substring(1))
+        ElseIf SC.ToLower.StartsWith("p") Then
+            hsv(1) = hsv(1) * (Integer.Parse(SC.Substring(1)) / 100)
+        Else
+            hsv(1) = hsv(1) + Integer.Parse(SC)
+        End If
+
+        'change value
+        If VC.ToLower.StartsWith("s") Then
+            hsv(2) = Integer.Parse(VC.Substring(1))
+        ElseIf VC.ToLower.StartsWith("p") Then
+            hsv(2) = hsv(2) * (Integer.Parse(VC.Substring(1)) / 100)
+        Else
+            hsv(2) = hsv(2) + Integer.Parse(VC)
+        End If
+
+        'make sure hsv is in the correct bounds
+        If hsv(0) < 0 Then hsv(0) = hsv(0) + 360
+        If hsv(0) > 360 Then hsv(0) = hsv(0) - 360
+
+        If hsv(1) < 0 Then hsv(1) = 0
+        If hsv(1) > 255 Then hsv(1) = 255
+
+        If hsv(2) < 0 Then hsv(2) = 0
+        If hsv(2) > 255 Then hsv(2) = 255
+
+        Return hsv
+    End Function
 End Class
 
 Public Class dye_color
     Public name As String
     Public hrname As String
-    Public hue As Integer
-    Public sat As Integer
-    Public val As Integer
-    Public setSat As Boolean
-    Public setVal As Boolean
+    Public dcolor As String
+    Public hue As String
+    Public sat As String
+    Public val As String
 
-    Public Sub New(ByVal nNAME As String, ByVal nHRNAME As String, ByVal nHUE As Integer, ByVal nSAT As Integer, ByVal nVAL As Integer, ByVal nSETSAT As Boolean, ByVal nSETVAL As Boolean)
+    Public Sub New(ByVal nNAME As String, ByVal nHRNAME As String, ByVal nDCOLOR As String, ByVal nHUE As String, ByVal nSAT As String, ByVal nVAL As String)
         name = nNAME
         hrname = nHRNAME
+        dcolor = nDCOLOR
         hue = nHUE
         sat = nSAT
         val = nVAL
-        setSat = nSETSAT
-        setVal = nSETVAL
     End Sub
 
-    Public Overrides Function ToString() As String
-        Return (name + " " + hrname + ":" + hue.ToString + "," + sat.ToString + "," + val.ToString + ":" + setSat.ToString + "," + setVal.ToString)
-    End Function
 End Class
 
 Public Class PARSE
@@ -1164,6 +1255,8 @@ Public Class PARSE
                     out_str = out_str + Form1.currentColor.name
                 ElseIf str_sub = "hrcolor" Then
                     out_str = out_str + Form1.currentColor.hrname
+                ElseIf str_sub = "rcolor" Or str_sub = "dcolor" Then
+                    out_str = out_str + Form1.currentColor.dcolor
                 ElseIf str_sub = "ifolder" Or str_sub = "impath" Then
                     out_str = out_str + TEXT(Form1.TB_ifolder.Text)    'possible never ending loop if ~ifolder~ is put in TB_ifolder TODO fix in form
                 ElseIf str_sub = "rfile" Then
@@ -1204,21 +1297,7 @@ Public Class PARSE
     Public Shared Function COLOR(ByVal str As String) As dye_color
         Dim split() As String = str.Split(",")
 
-        Dim setSat As Boolean
-        Dim setVal As Boolean
-        If split(5).ToLower.Contains("f") Then
-            setSat = False
-        Else
-            setSat = True
-        End If
-
-        If split(6).ToLower.Contains("f") Then
-            setVal = False
-        Else
-            setVal = True
-        End If
-
-        Return New dye_color(split(0), split(1), Integer.Parse(split(2)), Integer.Parse(split(3)), Integer.Parse(split(4)), setSat, setVal)
+        Return New dye_color(split(0), split(1), split(2), split(3), split(4), split(5))
     End Function
 
     'parse recipe ingredients

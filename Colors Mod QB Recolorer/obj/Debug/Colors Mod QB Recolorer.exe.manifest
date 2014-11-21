@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Colors Mod QB Recolorer.exe" size="79808">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Colors Mod QB Recolorer.exe" size="94144">
       <assemblyIdentity name="Colors Mod QB Recolorer" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>10nz5S7K5WQ/GxjZdZExj5KukBZgAzqtbA6GZwUcpu8=</dsig:DigestValue>
+        <dsig:DigestValue>vhDnNsFq/rS1xv8NQ58Tx2LIjmHb1/9XC4s9hwEZ7hk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -129,13 +129,13 @@
       <dsig:DigestValue>DOkRHvCCC2G3QYgytjaBygxjhD+F2yuL0GFbmczU3Hw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="TODO.txt" size="913">
+  <file name="TODO.txt" size="951">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PidfmBgbj5YY3AukhKWnGwPopzcTt3UeQ5xP0wRmOu4=</dsig:DigestValue>
+      <dsig:DigestValue>+MgCqSAGzuNDy2RyAzML35Pa2cpYYI4okAqIN6MUPO4=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">
